@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="539.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.DashboardController">
+    <stylesheets>
+        <URL value="@dashboard.css" />
+    </stylesheets>
+   <children>
+      <MenuBar layoutX="6.0" layoutY="8.0">
+        <menus>
+            <Menu mnemonicParsing="false" text="Paramètres">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Profil" />
+                  <RadioMenuItem mnemonicParsing="false" text="Mode Sombre" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Etudiant" />
+            <Menu mnemonicParsing="false" text="Territoire">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Département" />
+                  <MenuItem mnemonicParsing="false" text="Commune" />
+                  <MenuItem mnemonicParsing="false" text="Arrondissement" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Se déconnecter" />
+        </menus>
+      </MenuBar>
+      <BarChart layoutX="14.0" layoutY="70.0" prefHeight="400.0" prefWidth="500.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <ListView layoutX="514.0" layoutY="70.0" prefHeight="375.0" prefWidth="375.0" />
+   </children>
+</AnchorPane>
