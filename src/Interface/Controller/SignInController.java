@@ -4,6 +4,7 @@
  */
 package Interface.Controller;
 
+import Entities.User;
 import Helper.AlertHelper;
 import java.io.IOException;
 import java.net.URL;
@@ -21,6 +22,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 
 /**
  * FXML Controller class
@@ -80,11 +85,36 @@ public class SignInController implements Initializable {
             signInBtn.setDisable(true);
         } else if(!passwordInput.equals(passwordConfirmInput)) {
             AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Erreur",
-                    "Les mots de passes entrés ne sont pas identiques.\n Il est nécéssaire de mettre un mot de passe de 8 charactères minimum\n dont 1 majuscule, 1 chiffre et 1 symbole");
+                    "Les mots de passes entrés ne sont pas identiques.\n Il est nécéssaire de mettre un mot de passe de 6 charactères minimum dont 1 majuscule.");
             passwordField.setText("");
             passwordConfirmField.setText("");
             signInBtn.setDisable(true);
         } else {
+            //TODO loading gif
+            StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
+            String encryptedPassword = passwordEncryptor.encryptPassword(passwordInput);
+
+            User newUser = new User();
+            newUser.setEmail(emailField.getText());
+            newUser.setPassword(encryptedPassword);
+
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("GestApp3PU");
+            EntityManager em = emf.createEntityManager();
+
+            try {
+                em.getTransaction().begin();
+                em.persist(newUser);
+                em.getTransaction().commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+                AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Erreur",
+                        "Une erreur s'est produite lors de l'enregistrement. Veuillez réessayer.");
+                return;
+            } finally {
+                em.close();
+                emf.close();
+            }
+
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Interface/Login.fxml"));
                 Scene newScene = new Scene(loader.load());
@@ -112,7 +142,7 @@ public class SignInController implements Initializable {
 
     @FXML 
     private void checkPasswordField() {
-        String passwordPattern = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+        String passwordPattern = "^(?=.*[A-Z])[A-Za-z]{6,}$";
         String passwordInput = passwordField.getText();
         if (!passwordInput.matches(passwordPattern)) {
             passwordField.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
@@ -127,7 +157,7 @@ public class SignInController implements Initializable {
     
     private boolean isFormValid() {
         String emailPattern = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
-        String passwordPattern = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}";
+        String passwordPattern = "^(?=.*[A-Z])[A-Za-z]{6,}$";
 
         return emailField.getText().matches(emailPattern) && passwordField.getText().matches(passwordPattern);
     }
