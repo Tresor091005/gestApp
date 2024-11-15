@@ -1,15 +1,15 @@
-package launch;
+package Launch;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import Interface.LoadingController;
+import Interface.Controller.LoadingController;
 
 import java.io.IOException;
 
-public class Load extends Application {
+public class MainPanel extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Interface/Loading.fxml"));

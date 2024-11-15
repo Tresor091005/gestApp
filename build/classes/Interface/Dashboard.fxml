@@ -11,9 +11,9 @@
 <?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="539.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.DashboardController">
+<AnchorPane id="AnchorPane" prefHeight="539.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.Controller.DashboardController">
     <stylesheets>
-        <URL value="@dashboard.css" />
+        <URL value="@main.css" />
     </stylesheets>
    <children>
       <MenuBar layoutX="6.0" layoutY="8.0">

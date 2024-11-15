@@ -6,9 +6,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" opacity="0.6" prefHeight="295.0" prefWidth="307.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.LoadingController">
+<AnchorPane id="AnchorPane" opacity="0.6" prefHeight="295.0" prefWidth="307.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.Controller.LoadingController">
     <stylesheets>
-        <URL value="@loading.css" />
+        <URL value="@main.css" />
     </stylesheets>
    <children>
       <ProgressBar fx:id="progressBar" layoutX="16.0" layoutY="263.0" prefHeight="18.0" prefWidth="275.0" progress="0.0" />

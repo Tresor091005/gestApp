@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package Interface;
+package Interface.Controller;
 
+import Helper.AlertHelper;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,22 +12,23 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.Window;
 
 /**
  * FXML Controller class
  *
  * @author HP
  */
-public class LoginController implements Initializable {
-    
+public class SignInController implements Initializable {
+
     @FXML
     private TextField emailField;
     
@@ -34,7 +36,10 @@ public class LoginController implements Initializable {
     private TextField passwordField;
     
     @FXML
-    private Button loginBtn;
+    private TextField passwordConfirmField;
+    
+    @FXML
+    private Button signInBtn;
     
     @FXML 
     private Label passwordErr;
@@ -45,7 +50,7 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
+    }    
     
     @FXML
     private void onCloseBtnClick() {
@@ -53,9 +58,9 @@ public class LoginController implements Initializable {
     }
     
     @FXML
-    private void onSignInBtnClick(ActionEvent event) {
+    private void onLoginBtnClick(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Interface/SignIn.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Interface/Login.fxml"));
             Scene newScene = new Scene(loader.load());
 
             Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
@@ -64,32 +69,32 @@ public class LoginController implements Initializable {
             e.printStackTrace();
         }
     }
-
+    
     @FXML
-    private void onLoginClick(ActionEvent event) {
+    private void onSignInBtnClick(ActionEvent event) {
+        Window window = signInBtn.getScene().getWindow();
+        String passwordInput = passwordField.getText();
+        String passwordConfirmInput = passwordConfirmField.getText();
+        
         if (!isFormValid()) {
-            loginBtn.setDisable(true);
-            showErrorDialog("Formulaire invalide");
+            signInBtn.setDisable(true);
+        } else if(!passwordInput.equals(passwordConfirmInput)) {
+            AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Erreur",
+                    "Les mots de passes entrés ne sont pas identiques.\n Il est nécéssaire de mettre un mot de passe de 8 charactères minimum\n dont 1 majuscule, 1 chiffre et 1 symbole");
+            passwordField.setText("");
+            passwordConfirmField.setText("");
+            signInBtn.setDisable(true);
         } else {
             try {
-                // Ferme la fenêtre actuelle (loading)
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Interface/Login.fxml"));
+                Scene newScene = new Scene(loader.load());
+
                 Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-                currentStage.close();
-
-                // Charge le fichier FXML de login
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Interface/Dashboard.fxml"));
-                Scene dashboardScene = new Scene(loader.load());
-
-                // Ouvre la nouvelle scène (login.fxml)
-                Stage dashboardStage = new Stage();
-                dashboardStage.setTitle("GestApp");
-                dashboardStage.setScene(dashboardScene);
-                dashboardStage.setFullScreen(true);
-                dashboardStage.show();
+                currentStage.setScene(newScene);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }   
+        }
     }
     
     @FXML 
@@ -98,14 +103,13 @@ public class LoginController implements Initializable {
         String emailInput = emailField.getText();
         if (!emailInput.matches(emailPattern)) {
             emailField.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
-            loginBtn.setDisable(true);
+            signInBtn.setDisable(true);
         } else {
             emailField.setStyle("");
-            loginBtn.setDisable(!isFormValid());
+            signInBtn.setDisable(!isFormValid());
         }
     }
 
-    
     @FXML 
     private void checkPasswordField() {
         String passwordPattern = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
@@ -113,11 +117,11 @@ public class LoginController implements Initializable {
         if (!passwordInput.matches(passwordPattern)) {
             passwordField.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
             passwordErr.setText("Mot de passe faible");
-            loginBtn.setDisable(true);
+            signInBtn.setDisable(true);
         } else {
             passwordField.setStyle("");
             passwordErr.setText("");
-            loginBtn.setDisable(!isFormValid());
+            signInBtn.setDisable(!isFormValid());
         }
     }
     
@@ -129,7 +133,7 @@ public class LoginController implements Initializable {
     }
     
     private void showErrorDialog(String errorMessage) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        Alert alert = new Alert(AlertType.ERROR);
         alert.initStyle(StageStyle.UNDECORATED);
         alert.setContentText(errorMessage);
 
