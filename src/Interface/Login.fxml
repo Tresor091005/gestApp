@@ -33,8 +33,8 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="emailField" layoutX="123.0" layoutY="152.0" onMouseExited="#checkEmailField" prefHeight="25.0" prefWidth="163.0" text="example@email.com" />
-      <PasswordField fx:id="passwordField" layoutX="180.0" layoutY="196.0" onMouseExited="#checkPasswordField" prefHeight="25.0" prefWidth="163.0" />
+      <TextField fx:id="emailField" layoutX="123.0" layoutY="152.0" onMouseExited="#checkEmailField" prefHeight="25.0" prefWidth="163.0" text="happiness@email.com" />
+      <PasswordField fx:id="passwordField" layoutX="180.0" layoutY="196.0" onMouseExited="#checkPasswordField" prefHeight="25.0" prefWidth="163.0" text="Password" />
       <Button layoutX="248.0" layoutY="311.0" mnemonicParsing="false" onAction="#onSignInBtnClick" prefHeight="25.0" prefWidth="101.0" text="&lt; S'inscrire" />
     <Button fx:id="loginBtn" layoutX="362.0" layoutY="311.0" mnemonicParsing="false" onAction="#onLoginClick" prefHeight="25.0" prefWidth="101.0" text="Se connecter &gt;" />
       <Button layoutX="40.0" layoutY="311.0" mnemonicParsing="false" onAction="#onCloseBtnClick" prefHeight="25.0" prefWidth="101.0" text="Fermer" />

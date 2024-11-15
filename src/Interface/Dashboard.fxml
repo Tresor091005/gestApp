@@ -4,14 +4,16 @@
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="539.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.Controller.DashboardController">
+<AnchorPane id="AnchorPane" prefHeight="539.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.DashboardController">
     <stylesheets>
         <URL value="@main.css" />
     </stylesheets>
@@ -22,6 +24,8 @@
               <items>
                 <MenuItem mnemonicParsing="false" text="Profil" />
                   <RadioMenuItem mnemonicParsing="false" text="Mode Sombre" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#onDisconnectBtnClick" text="Se déconnecter" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Etudiant" />
@@ -32,7 +36,6 @@
                   <MenuItem mnemonicParsing="false" text="Arrondissement" />
               </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Se déconnecter" />
         </menus>
       </MenuBar>
       <BarChart layoutX="14.0" layoutY="70.0" prefHeight="400.0" prefWidth="500.0">
@@ -44,5 +47,6 @@
         </yAxis>
       </BarChart>
       <ListView layoutX="514.0" layoutY="70.0" prefHeight="375.0" prefWidth="375.0" />
+      <Button layoutX="49.0" layoutY="470.0" mnemonicParsing="false" onAction="#onDisconnectBtnClick" text="Button" />
    </children>
 </AnchorPane>
