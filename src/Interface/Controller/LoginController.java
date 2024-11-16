@@ -6,7 +6,6 @@ package Interface.Controller;
 
 import Entities.User;
 import Helper.AlertHelper;
-import Helper.JPAUtil;
 import Service.UserService;
 import java.io.IOException;
 import java.net.URL;
@@ -23,8 +22,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
-import javax.persistence.EntityManager;
-import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
 /**
@@ -103,7 +100,7 @@ public class LoginController implements Initializable {
                         Scene dashboardScene = new Scene(loader.load());
                         
                         Stage dashboardStage = new Stage();
-                        dashboardStage.setTitle("GestApp");
+                        dashboardStage.setTitle("GestApp - Acceuil");
                         dashboardStage.setScene(dashboardScene);
                         dashboardStage.setFullScreen(true);
                         dashboardStage.show();

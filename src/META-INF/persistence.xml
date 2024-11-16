@@ -4,6 +4,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Entities.Users</class>
     <class>Entities.User</class>
+    <class>Entities.Student</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gestapp3?serverTimezone=Africa/Porto-Novo"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

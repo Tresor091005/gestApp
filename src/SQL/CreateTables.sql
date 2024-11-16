@@ -1,4 +1,6 @@
 DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `students`;
+
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `email` varchar(70) NOT NULL,
@@ -6,3 +8,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 )
+
+create table `students`(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    matricule int unique not null,
+    nom varchar(20) not null,
+    prenom varchar(80) not null,
+    date_naissance datetime not null,
+    email varchar(50),
+    telephone int not null
+);

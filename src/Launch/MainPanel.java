@@ -1,5 +1,6 @@
 package Launch;
 
+import Helper.JPAUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,6 +13,10 @@ import java.io.IOException;
 public class MainPanel extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            JPAUtil.closeEntityManagerFactory();
+        }));
+        
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Interface/Loading.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 

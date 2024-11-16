@@ -60,5 +60,23 @@ public class DashboardController implements Initializable {
             e.printStackTrace();
         }
     }
+    
+    @FXML
+    public void onStudentBtnClick(ActionEvent event) {
+        try {
+            // Charge et affiche la fenêtre de connexion
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Interface/Student.fxml"));
+            Scene studentScene = new Scene(loader.load());
+
+            Stage studentStage = new Stage();
+            studentStage.setTitle("GestApp - Etudiants");
+            studentStage.setScene(studentScene);
+            studentStage.centerOnScreen();
+            studentStage.show();
+        } catch (IOException e) {
+            AlertHelper.showAlert(Alert.AlertType.ERROR, null, "Erreur", "Impossible de charger cet écran.");
+            e.printStackTrace();
+        }
+    }
 
 }
