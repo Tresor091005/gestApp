@@ -5,6 +5,7 @@
     <class>Entities.Users</class>
     <class>Entities.User</class>
     <class>Entities.Student</class>
+    <class>Entities.Departement</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gestapp3?serverTimezone=Africa/Porto-Novo"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

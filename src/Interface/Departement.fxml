@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="299.0" prefWidth="529.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.Controller.DepartementController">
+    <stylesheets>
+        <URL value="@main.css" />
+    </stylesheets>
+    <children>
+      <Label layoutX="33.0" layoutY="165.0" text="Nom">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <TextField fx:id="nomField" layoutX="88.0" layoutY="162.0" prefHeight="25.0" prefWidth="200.0" />
+      <TableView fx:id="liste" layoutX="319.0" layoutY="27.0" prefHeight="230.0" prefWidth="174.0">
+        <columns>
+          <TableColumn fx:id="nomColumn" prefWidth="170.0" text="Nom" />
+        </columns>
+      </TableView>
+      <ButtonBar layoutX="23.0" layoutY="217.0" prefHeight="40.0" prefWidth="250.0">
+        <buttons>
+          <Button mnemonicParsing="false" onAction="#onAddButtonClick" prefHeight="25.0" prefWidth="174.0" text="Enrégistrer" />
+            <Button mnemonicParsing="false" onAction="#onUpdateButtonClick" prefHeight="8.0" prefWidth="83.0" text="Modifier" />
+            <Button mnemonicParsing="false" onAction="#onDeleteButtonClick" text="Supprimer" />
+        </buttons>
+      </ButtonBar>
+      <Label layoutX="64.0" layoutY="83.0" text="Mes Départements">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

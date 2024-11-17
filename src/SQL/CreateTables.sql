@@ -18,3 +18,8 @@ create table `students`(
     email varchar(50),
     telephone int not null
 );
+
+create table departements(
+    id int PRIMARY key AUTO_INCREMENT,
+    nom varchar(50) unique not null
+);

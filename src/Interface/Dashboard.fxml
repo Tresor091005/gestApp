@@ -33,7 +33,7 @@
                </items></Menu>
             <Menu mnemonicParsing="false" text="Territoire">
               <items>
-                <MenuItem mnemonicParsing="false" text="Département" />
+                <MenuItem mnemonicParsing="false" onAction="#onDepartementBtnClick" text="Département" />
                   <MenuItem mnemonicParsing="false" text="Commune" />
                   <MenuItem mnemonicParsing="false" text="Arrondissement" />
               </items>
