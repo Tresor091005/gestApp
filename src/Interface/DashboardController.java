@@ -87,7 +87,25 @@ public class DashboardController implements Initializable {
             Scene studentScene = new Scene(loader.load());
 
             Stage studentStage = new Stage();
-            studentStage.setTitle("GestApp - Etudiants");
+            studentStage.setTitle("GestApp - Départements");
+            studentStage.setScene(studentScene);
+            studentStage.centerOnScreen();
+            studentStage.show();
+        } catch (IOException e) {
+            AlertHelper.showAlert(Alert.AlertType.ERROR, null, "Erreur", "Impossible de charger cet écran.");
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
+    public void onCommuneBtnClick(ActionEvent event) {
+        try {
+            // Charge et affiche la fenêtre de connexion
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Interface/Commune.fxml"));
+            Scene studentScene = new Scene(loader.load());
+
+            Stage studentStage = new Stage();
+            studentStage.setTitle("GestApp - Communes");
             studentStage.setScene(studentScene);
             studentStage.centerOnScreen();
             studentStage.show();

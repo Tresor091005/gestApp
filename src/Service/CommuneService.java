@@ -4,23 +4,23 @@
  */
 package Service;
 
-import Entities.Departement;
+import Entities.Commune;
 import Helper.JPAUtil;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-public class DepartementService {
+public class CommuneService {
     private EntityManager entityManager;
 
-    public DepartementService() {
+    public CommuneService() {
         this.entityManager = JPAUtil.getEntityManager();
     }
     
-    public List<Departement> getAllDepartements() {
+    public List<Commune> getAllCommunes() {
         try {
-            return entityManager.createQuery("SELECT d FROM Departement d", Departement.class)
+            return entityManager.createQuery("SELECT c FROM Commune c", Commune.class)
                      .getResultList();
         } catch (Exception e) {
             e.printStackTrace();
@@ -28,21 +28,21 @@ public class DepartementService {
         } 
     }
     
-    public Departement getDepartementById(Integer departementId) {
+    public Commune getCommuneById(Integer communeId) {
         try {
-            return entityManager.find(Departement.class, departementId);
+            return entityManager.find(Commune.class, communeId);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
     
-    public boolean addDepartement(Departement departement) {
+    public boolean addCommune(Commune commune) {
         // Start a transaction
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            entityManager.persist(departement);
+            entityManager.persist(commune);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -55,12 +55,13 @@ public class DepartementService {
         }
     }
     
-    public boolean updateDepartement(Departement departement) {
+    public boolean updateCommune(Commune commune) {
         try {
             entityManager.getTransaction().begin();
-            Departement existingDepartement = entityManager.find(Departement.class, departement.getId());
-            if (existingDepartement != null) {
-                existingDepartement.setNom(departement.getNom());
+            Commune existingCommune = entityManager.find(Commune.class, commune.getId());
+            if (existingCommune != null) {
+                existingCommune.setNom(commune.getNom());
+                existingCommune.setDepartement(commune.getDepartement());
                 entityManager.getTransaction().commit();
                 return true;
             } else {
@@ -76,12 +77,12 @@ public class DepartementService {
         }
     }
     
-    public boolean deleteDepartementById(Integer departementId) {
+    public boolean deleteCommuneById(Integer communeId) {
         try {
             entityManager.getTransaction().begin();
-            Departement departement = entityManager.find(Departement.class, departementId);
-            if (departement != null) {
-                entityManager.remove(departement);
+            Commune commune = entityManager.find(Commune.class, communeId);
+            if (commune != null) {
+                entityManager.remove(commune);
                 entityManager.getTransaction().commit();
                 return true;
             } else {

@@ -105,6 +105,8 @@ public class SignInController implements Initializable {
                 em.getTransaction().begin();
                 em.persist(newUser);
                 em.getTransaction().commit();
+                AlertHelper.showAlert(Alert.AlertType.INFORMATION, window, "Succès",
+                        "Inscription réussie");
             } catch (Exception e) {
                 e.printStackTrace();
                 AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Erreur",

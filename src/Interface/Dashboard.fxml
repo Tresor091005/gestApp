@@ -21,7 +21,6 @@
         <menus>
             <Menu mnemonicParsing="false" text="Paramètres">
               <items>
-                <MenuItem mnemonicParsing="false" text="Profil" />
                   <RadioMenuItem mnemonicParsing="false" text="Mode Sombre" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#onDisconnectBtnClick" text="Se déconnecter" />
@@ -34,7 +33,7 @@
             <Menu mnemonicParsing="false" text="Territoire">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#onDepartementBtnClick" text="Département" />
-                  <MenuItem mnemonicParsing="false" text="Commune" />
+                  <MenuItem mnemonicParsing="false" onAction="#onCommuneBtnClick" text="Commune" />
                   <MenuItem mnemonicParsing="false" text="Arrondissement" />
               </items>
             </Menu>
